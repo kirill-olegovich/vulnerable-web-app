@@ -1,0 +1,36 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/quill.snow.css}">
+<!--    <script th:src="@{/js/quill.js}"></script>-->
+<!--    <script defer th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>-->
+<!--    <script defer th:src="@{/js/popper.min.js}"></script>-->
+<!--    <script defer th:src="@{/js/bootstrap.min.js}"></script>-->
+</head>
+<body>
+<header>
+    <nav class="bg-light navbar navbar-expand-lg navbar-light d-flex justify-content-center">
+        <p class="navbar-brand my-auto">TEST NAME</p>
+
+        <div class="m-auto" sec:authorize="!isAuthenticated()">
+            <p class="m-auto">You are not logged in</p>
+        </div>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home Page</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-danger" th:href="@{/logout}">Logout</a>
+            </li>
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

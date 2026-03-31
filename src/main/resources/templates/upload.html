@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<title>Upload a new image</title>
+<body class="d-flex flex-column min-vh-100">
+<header th:replace="fragments/header :: header"></header>
+
+<div class="card mx-auto my-3" style="width: 50rem;">
+    <div class="card-body">
+        <h3 class="card-title">Upload a new image</h3>
+
+        <form action="#"
+              th:object="${uploadImageRequest}"
+              enctype="multipart/form-data"
+              class="m-0"
+              method="POST">
+            <div>
+                <label for="title">Title</label>
+                <input th:field="*{title}" class="form-control mb-3"
+                       type="text" id="title" placeholder="Title..." required/>
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input th:field="*{image}" type="file" id="image">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload an image</button>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
