@@ -20,10 +20,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class FileService {
     @Value("${app.upload.dir}")
-    private final String rootDir;
+    private String rootDir;
 
     public void validate(MultipartFile image) {
         if (image.isEmpty() || !Objects.equals(image.getContentType(), "image/jpeg")) {

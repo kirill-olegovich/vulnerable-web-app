@@ -1,5 +1,6 @@
 package study.shalashov.vulnerable_web_app.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -57,7 +58,7 @@ public class ImageController {
     public String uploadImage(
 //            @RequestPart("metadata") String title,
 //            @RequestPart("image") MultipartFile file,
-            @ModelAttribute UploadImageRequest uploadImageRequest,
+            @Valid @ModelAttribute UploadImageRequest uploadImageRequest,
             @AuthenticationPrincipal MyUserDetails userDetails,
             Model model
     ) throws IOException {

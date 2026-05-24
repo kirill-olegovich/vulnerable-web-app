@@ -1,6 +1,7 @@
 package study.shalashov.vulnerable_web_app.services;
 
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.NonNull;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +16,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow(
                 () -> new UsernameNotFoundException("User with username '" + username + "' does not exist!")
         );
@@ -24,5 +25,9 @@ public class MyUserDetailsService implements UserDetailsService {
 
     public User createUser(User user) {
         return userRepository.save(user);
+    }
+
+    public Boolean userExistsByUsername(String username) {
+        return userRepository.findByUsername(username).isPresent();
     }
 }

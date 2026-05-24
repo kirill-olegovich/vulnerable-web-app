@@ -12,10 +12,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Configuration
-@RequiredArgsConstructor
 public class ImageDirectoryConfig {
     @Value("${app.upload.dir}")
-    private final String uploadDir;
+    private String uploadDir;
 
     @Bean
     CommandLineRunner init() {

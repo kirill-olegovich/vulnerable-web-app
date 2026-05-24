@@ -2,6 +2,7 @@ package study.shalashov.vulnerable_web_app.dtos;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,6 @@ public class UploadImageRequest {
     @Size(min = 5, max = 50, message = "Title must be between {min} and {max} characters")
     private String title;
 
-    @NotBlank
+    @NotNull
     private MultipartFile image;
 }

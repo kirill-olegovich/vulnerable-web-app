@@ -43,7 +43,7 @@ public class ImageService {
     public ImageMetadata createNew(MyUserDetails userDetails, String title, MultipartFile imageFile) throws IOException {
         FileService.validate(imageFile);
 
-        String imagePath = FileService.store(imageFile.getInputStream(), imageFile.getName());
+        String imagePath = FileService.store(imageFile.getInputStream(), imageFile.getOriginalFilename());
         ImageMetadata imageMetadata = ImageMetadata.builder()
                 .title(title)
                 .path(imagePath)
